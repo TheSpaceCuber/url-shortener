@@ -6,6 +6,7 @@ import 'dotenv/config'
 
 // connect to mongodb atlas or localhost (used in github actions for testing)
 const uri = process.env.ENV == "PROD" ? process.env.DB_CLOUD_URI : "mongodb://localhost:27017/";
+
 mongoose.connect(uri)
     .then((x) => {
         console.log(`Connected to MongoDB! Database name: "${x.connections[0].name}"`)
@@ -28,3 +29,5 @@ const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`)
 })
+
+export default app
