@@ -24,7 +24,6 @@ router.post('/shorten-url', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        console.log(req.params)
         const url = await Url.findOne({shortenedUrl: req.params.id})
         if (url == null) return res.sendStatus(404)
         res.redirect(url.originalUrl)
