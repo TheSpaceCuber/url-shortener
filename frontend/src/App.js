@@ -11,24 +11,27 @@ import Button from 'react-bootstrap/Button'
 function App() {
     const [urlList, setUrlList] = useState([])
 
+    const endpoint = process.env.REACT_APP_ENV === "DEV" 
+        ? "http://localhost:5000/"
+        : "https://goldfish-app-w4ei8.ondigitalocean.app/"
+
     useEffect(() => {
-        axios.get("http://localhost:5000/")
+        axios.get(endpoint)
             .then((res) => {
                 setUrlList(res.data)
             })
             .catch((err) => console.log(err))
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleDelete = (id) => {
-        axios.delete("http://localhost:5000/delete/" + id)
+        axios.delete(endpoint + "delete/" + id)
             .then((res) => {
                 console.log(urlList.filter((url) => url._id !== id))
                 setUrlList(urlList.filter((url) => url._id !== id))
             })
             .catch((err) => console.log(err))
     }
-
-    const endpoint = "http://localhost:5000/"
 
     return (
         <div className="App">

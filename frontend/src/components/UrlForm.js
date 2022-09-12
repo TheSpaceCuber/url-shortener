@@ -7,10 +7,14 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const UrlForm = (props) => {
     const [url, setUrl] = useState("")
-    
+
+    const endpoint = process.env.REACT_APP_ENV === "DEV" 
+        ? "http://localhost:5000/"
+        : "https://goldfish-app-w4ei8.ondigitalocean.app/"
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/shorten-url', {originalUrl: url})
+        axios.post(endpoint + 'shorten-url', {originalUrl: url})
             .then((res) => {
                 props.setUrlList(res.data)
             })
