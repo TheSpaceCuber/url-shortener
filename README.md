@@ -1,5 +1,12 @@
 # URL Shortener
 
+## Table of contents
+  * [Local Setup](#local-setup)
+  * [Tech Stack](#tech-stack)
+  * [How it works](#how-it-works)
+  * [Decisions](#decisions)
+  * [References](#references)
+
 ## Local Setup
 Ensure you have [NodeJS](https://nodejs.org/en/) installed.
 
